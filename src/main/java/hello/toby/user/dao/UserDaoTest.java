@@ -1,6 +1,5 @@
 package hello.toby.user.dao;
 
-import hello.toby.user.dao.daoV3.SimpleConnectionMaker;
 import hello.toby.user.dao.daoV3.UserDaoV4;
 import hello.toby.user.dao.daoV4.ConnectionMaker;
 import hello.toby.user.dao.daoV4.NConnectionMaker;
@@ -37,17 +36,11 @@ public class UserDaoTest {
 //        UserDao userDao = new UserDaoV1();
 //        UserDao userDao = new UserDaoV2();
 //        UserDao userDao = new NUserDao();
-//        UserDao userDao = getUserDaoV4();
-        UserDao userDao = getUserDaoV5();
+        UserDao userDao = new UserDaoV4();
+//        UserDao userDao = getUserDaoV5();
 
         UserDaoTest userDaoTest = new UserDaoTest(userDao);
         userDaoTest.runTest(userDao);
-    }
-
-    private static UserDao getUserDaoV4() {
-        SimpleConnectionMaker simpleConnectionMaker = new SimpleConnectionMaker();
-        UserDao userDao = new UserDaoV4(simpleConnectionMaker);
-        return userDao;
     }
 
     private static UserDao getUserDaoV5() {

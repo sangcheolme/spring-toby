@@ -15,8 +15,8 @@ public class UserDaoV4 implements UserDao {
 
     private final SimpleConnectionMaker simpleConnectionMaker;
 
-    public UserDaoV4(SimpleConnectionMaker simpleConnectionMaker) {
-        this.simpleConnectionMaker = simpleConnectionMaker;
+    public UserDaoV4() {
+        this.simpleConnectionMaker = new SimpleConnectionMaker();
     }
 
     @Override
