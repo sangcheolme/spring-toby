@@ -7,7 +7,10 @@ import hello.toby.user.dao.daoV4.UserDaoV5;
 public class DaoFactory {
 
     public UserDao userDao() {
-        ConnectionMaker connectionMaker = new DConnectionMaker();
-        return new UserDaoV5(connectionMaker);
+        return new UserDaoV5(connectionMaker());
+    }
+
+    public ConnectionMaker connectionMaker() {
+        return new DConnectionMaker();
     }
 }
