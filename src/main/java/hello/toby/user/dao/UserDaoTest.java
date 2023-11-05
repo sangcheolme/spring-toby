@@ -1,9 +1,5 @@
 package hello.toby.user.dao;
 
-import hello.toby.user.dao.daoV3.UserDaoV4;
-import hello.toby.user.dao.daoV4.ConnectionMaker;
-import hello.toby.user.dao.daoV4.NConnectionMaker;
-import hello.toby.user.dao.daoV4.UserDaoV5;
 import hello.toby.user.domain.User;
 
 import java.sql.SQLException;
@@ -33,19 +29,14 @@ public class UserDaoTest {
     }
 
     public static void main(String[] args) throws SQLException {
-//        UserDao userDao = new UserDaoV1();
-//        UserDao userDao = new UserDaoV2();
-//        UserDao userDao = new NUserDao();
-        UserDao userDao = new UserDaoV4();
-//        UserDao userDao = getUserDaoV5();
+        //UserDao userDao = new UserDaoV1();
+        //UserDao userDao = new UserDaoV2();
+        //UserDao userDao = new NUserDao();
+        //UserDao userDao = new UserDaoV4();
+
+        UserDao userDao = new DaoFactory().userDao();
 
         UserDaoTest userDaoTest = new UserDaoTest(userDao);
         userDaoTest.runTest(userDao);
-    }
-
-    private static UserDao getUserDaoV5() {
-        ConnectionMaker connectionMaker = new NConnectionMaker();
-        UserDao userDao = new UserDaoV5(connectionMaker);
-        return userDao;
     }
 }
