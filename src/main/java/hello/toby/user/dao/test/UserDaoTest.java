@@ -1,18 +1,14 @@
-package hello.toby.user.dao;
+package hello.toby.user.dao.test;
 
+import hello.toby.user.dao.DaoFactory;
+import hello.toby.user.dao.UserDao;
 import hello.toby.user.domain.User;
 
 import java.sql.SQLException;
 
 public class UserDaoTest {
 
-    private UserDao userDao;
-
-    public UserDaoTest(UserDao userDao) {
-        this.userDao = userDao;
-    }
-
-    public void runTest(UserDao userDao) throws SQLException {
+    public static void runTest(UserDao userDao) throws SQLException {
         User user = new User();
         user.setId("test_id");
         user.setName("test_name");
@@ -35,8 +31,6 @@ public class UserDaoTest {
         //UserDao userDao = new UserDaoV4();
 
         UserDao userDao = new DaoFactory().userDao();
-
-        UserDaoTest userDaoTest = new UserDaoTest(userDao);
-        userDaoTest.runTest(userDao);
+        runTest(userDao);
     }
 }
