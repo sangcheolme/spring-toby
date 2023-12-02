@@ -1,4 +1,4 @@
-package hello.toby.user.dao.daoV1;
+package hello.toby.user.dao.daoV1_2;
 
 import hello.toby.user.dao.UserDao;
 import hello.toby.user.domain.User;

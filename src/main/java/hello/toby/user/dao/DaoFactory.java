@@ -1,8 +1,8 @@
 package hello.toby.user.dao;
 
-import hello.toby.user.dao.daoV4.ConnectionMaker;
-import hello.toby.user.dao.daoV4.DConnectionMaker;
-import hello.toby.user.dao.daoV4.UserDaoV5;
+import hello.toby.user.dao.daoV5.ConnectionMaker;
+import hello.toby.user.dao.daoV5.DConnectionMaker;
+import hello.toby.user.dao.daoV5.UserDaoV5;
 
 public class DaoFactory {
 

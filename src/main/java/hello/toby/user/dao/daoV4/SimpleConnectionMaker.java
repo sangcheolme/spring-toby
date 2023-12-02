@@ -4,11 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class DConnectionMaker implements ConnectionMaker {
+public class SimpleConnectionMaker {
 
-    @Override
-    public Connection makeConnection() throws SQLException {
-        //D 사의 독자적인 방법으로 Connection을 생성하는 코드
+    public Connection makeNewConnection() throws SQLException {
         return DriverManager.getConnection(
                 "jdbc:h2:tcp://localhost/~/toby", "sa", "");
     }

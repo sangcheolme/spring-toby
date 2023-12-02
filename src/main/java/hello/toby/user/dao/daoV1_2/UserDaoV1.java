@@ -1,27 +1,16 @@
-package hello.toby.user.dao.daoV4;
+package hello.toby.user.dao.daoV1_2;
 
 import hello.toby.user.dao.UserDao;
 import hello.toby.user.domain.User;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
-/**
- * 인터페이스 도입
- */
-public class UserDaoV5 implements UserDao {
-
-    private final ConnectionMaker connectionMaker;
-
-    public UserDaoV5(ConnectionMaker connectionMaker) {
-        this.connectionMaker = connectionMaker;
-    }
+public class UserDaoV1 implements UserDao {
 
     @Override
     public void add(User user) throws SQLException {
-        Connection c = connectionMaker.makeConnection();
+        Connection c = DriverManager.getConnection(
+                "jdbc:h2:tcp://localhost/~/toby", "sa", "");
 
         PreparedStatement ps = c.prepareStatement(
                 "insert into users(id, name, password) values (?,?,?)");
@@ -38,11 +27,11 @@ public class UserDaoV5 implements UserDao {
 
     @Override
     public User get(String id) throws SQLException {
-        Connection c = connectionMaker.makeConnection();
+        Connection c = DriverManager.getConnection(
+                "jdbc:h2:tcp://localhost/~/toby", "sa", "");
 
         PreparedStatement ps = c.prepareStatement(
                 "select * from users where id = ?");
-
         ps.setString(1, id);
 
         ResultSet rs = ps.executeQuery();

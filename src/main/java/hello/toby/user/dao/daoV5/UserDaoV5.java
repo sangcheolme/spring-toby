@@ -1,4 +1,4 @@
-package hello.toby.user.dao.daoV3;
+package hello.toby.user.dao.daoV5;
 
 import hello.toby.user.dao.UserDao;
 import hello.toby.user.domain.User;
@@ -9,19 +9,19 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
- * 커넥션을 만드는 클래스(SimpleConnectionMaker) 분리
+ * 인터페이스 도입
  */
-public class UserDaoV4 implements UserDao {
+public class UserDaoV5 implements UserDao {
 
-    private final SimpleConnectionMaker simpleConnectionMaker;
+    private final ConnectionMaker connectionMaker;
 
-    public UserDaoV4() {
-        this.simpleConnectionMaker = new SimpleConnectionMaker();
+    public UserDaoV5(ConnectionMaker connectionMaker) {
+        this.connectionMaker = connectionMaker;
     }
 
     @Override
     public void add(User user) throws SQLException {
-        Connection c = simpleConnectionMaker.makeNewConnection();
+        Connection c = connectionMaker.makeConnection();
 
         PreparedStatement ps = c.prepareStatement(
                 "insert into users(id, name, password) values (?,?,?)");
@@ -38,10 +38,11 @@ public class UserDaoV4 implements UserDao {
 
     @Override
     public User get(String id) throws SQLException {
-        Connection c = simpleConnectionMaker.makeNewConnection();
+        Connection c = connectionMaker.makeConnection();
 
         PreparedStatement ps = c.prepareStatement(
                 "select * from users where id = ?");
+
         ps.setString(1, id);
 
         ResultSet rs = ps.executeQuery();
