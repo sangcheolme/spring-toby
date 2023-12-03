@@ -25,11 +25,13 @@ public class UserDaoTestV3 {
 
         User findUser = userDao.get(user.getId());
         if (!user.getId().equals(findUser.getId())) {
+            System.out.println("테스트 실패 (id)");
+        } else if (!user.getName().equals(findUser.getName())) {
             System.out.println("테스트 실패 (name)");
         } else if (!user.getPassword().equals(findUser.getPassword())) {
             System.out.println("테스트 실패 (password)");
         } else {
-            System.out.println("조회 테스트 성공");
+            System.out.println(findUser.getId() + " 조회 테스트 성공");
         }
     }
 
