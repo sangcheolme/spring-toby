@@ -1,7 +1,6 @@
 package hello.toby.user.dao.test;
 
 import hello.toby.user.dao.DaoFactory;
-import hello.toby.user.dao.UserDao;
 import hello.toby.user.dao.daoV6.UserDaoV6;
 import hello.toby.user.domain.User;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +15,7 @@ import java.sql.SQLException;
  */
 public class UserDaoTestV3 {
 
-    public static void runTest(UserDao userDao) throws SQLException {
+    public static void runTest(UserDaoV6 userDao) throws SQLException {
         userDao.deleteAll();
 
         User user = new User();
