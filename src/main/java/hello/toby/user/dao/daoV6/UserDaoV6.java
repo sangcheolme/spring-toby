@@ -60,6 +60,7 @@ public class UserDaoV6 implements UserDao {
         return user;
     }
 
+    @Override
     public void deleteAll() throws SQLException {
         Connection c = dataSource.getConnection();
 
@@ -71,6 +72,7 @@ public class UserDaoV6 implements UserDao {
         c.close();
     }
 
+    @Override
     public int getCount() throws SQLException {
         Connection c = dataSource.getConnection();
 

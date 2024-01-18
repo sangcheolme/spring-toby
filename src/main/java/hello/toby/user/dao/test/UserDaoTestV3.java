@@ -16,6 +16,8 @@ import java.sql.SQLException;
 public class UserDaoTestV3 {
 
     public static void runTest(UserDao userDao) throws SQLException {
+        userDao.deleteAll();
+
         User user = new User();
         user.setId("test_id");
         user.setName("test_name");

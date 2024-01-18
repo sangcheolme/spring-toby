@@ -9,4 +9,8 @@ public interface UserDao {
     void add(User user) throws SQLException;
 
     User get(String id) throws SQLException;
+
+    void deleteAll() throws SQLException;
+
+    int getCount() throws SQLException;
 }

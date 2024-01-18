@@ -49,6 +49,16 @@ public class UserDaoV2 implements UserDao {
         return user;
     }
 
+    @Override
+    public void deleteAll() throws SQLException {
+
+    }
+
+    @Override
+    public int getCount() throws SQLException {
+        return 0;
+    }
+
     private static Connection getConnection() throws SQLException {
         Connection c = DriverManager.getConnection(
                 "jdbc:h2:tcp://localhost/~/toby", "sa", "");

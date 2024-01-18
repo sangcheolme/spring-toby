@@ -51,4 +51,13 @@ public abstract class UserDaoV3 implements UserDao {
 
     public abstract Connection getConnection() throws SQLException;
 
+    @Override
+    public void deleteAll() throws SQLException {
+
+    }
+
+    @Override
+    public int getCount() throws SQLException {
+        return 0;
+    }
 }
