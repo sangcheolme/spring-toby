@@ -2,6 +2,7 @@ package hello.toby.user.dao.test;
 
 import hello.toby.user.dao.DaoFactory;
 import hello.toby.user.dao.UserDao;
+import hello.toby.user.dao.daoV6.UserDaoV6;
 import hello.toby.user.domain.User;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -39,7 +40,7 @@ public class UserDaoTestV3 {
 
     public static void main(String[] args) throws SQLException {
         ApplicationContext ac = new AnnotationConfigApplicationContext(DaoFactory.class);
-        UserDao userDao = ac.getBean("userDao", UserDao.class);
+        UserDaoV6 userDao = ac.getBean("userDaoV6", UserDaoV6.class);
         runTest(userDao);
     }
 }
