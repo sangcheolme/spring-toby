@@ -3,6 +3,7 @@ package hello.toby;
 import hello.toby.user.dao.DaoFactory;
 import hello.toby.user.dao.daoV6.UserDaoV6;
 import hello.toby.user.domain.User;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
@@ -18,14 +19,23 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
  */
 public class UserDaoTestV2 {
 
+    private UserDaoV6 userDao;
+    private User user1;
+    private User user2;
+    private User user3;
+
+    @BeforeEach
+    void setUp() {
+        ApplicationContext ac = new AnnotationConfigApplicationContext(DaoFactory.class);
+        userDao = ac.getBean("userDaoV6", UserDaoV6.class);
+
+        user1 = new User("gyumee", "박성철", "springno1");
+        user2 = new User("leegw700", "이길원", "springno2");
+        user3 = new User("bumjin", "박범진", "springno3");
+    }
+
     @Test
     void addAndGet() throws SQLException {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(DaoFactory.class);
-        UserDaoV6 userDao = ac.getBean("userDaoV6", UserDaoV6.class);
-
-        User user1 = new User("gyumee", "박성철", "springno1");
-        User user2 = new User("leegw700", "이길원", "springno2");
-
         userDao.deleteAll();
         assertThat(userDao.getCount()).isEqualTo(0);
 
@@ -44,13 +54,6 @@ public class UserDaoTestV2 {
 
     @Test
     void count() throws SQLException {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(DaoFactory.class);
-        UserDaoV6 userDao = ac.getBean("userDaoV6", UserDaoV6.class);
-
-        User user1 = new User("gyumee", "박성철", "springno1");
-        User user2 = new User("leegw700", "이길원", "springno2");
-        User user3 = new User("bumjin", "박범진", "springno3");
-
         userDao.deleteAll();
         assertThat(userDao.getCount()).isEqualTo(0);
 
@@ -66,14 +69,10 @@ public class UserDaoTestV2 {
 
     @Test
     void getUserFailure() throws SQLException {
-        ApplicationContext ac = new AnnotationConfigApplicationContext(DaoFactory.class);
-        UserDaoV6 userDao = ac.getBean("userDaoV6", UserDaoV6.class);
-
         userDao.deleteAll();
         assertThat(userDao.getCount()).isEqualTo(0);
 
         assertThatThrownBy(() -> userDao.get("unknown_id"))
                 .isInstanceOf(EmptyResultDataAccessException.class);
-
     }
 }

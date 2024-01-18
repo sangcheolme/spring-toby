@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class UserDaoTest {
+public class UserDaoTestV1 {
 
     @Test
     void addAndGet() throws SQLException {
