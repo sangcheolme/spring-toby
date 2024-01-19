@@ -15,9 +15,13 @@ import java.sql.SQLException;
  */
 public class UserDaoV6 implements UserDao {
 
-    private final DataSource dataSource;
+    private DataSource dataSource;
 
     public UserDaoV6(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
+
+    public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
 
