@@ -38,6 +38,7 @@ public class UserDaoTestV4 {
         dataSource.setPassword("");
         userDao = new UserDaoV6(dataSource);  // 코드에 의한 수동 DI
 
+        // Fixture 픽스처
         user1 = new User("gyumee", "박성철", "springno1");
         user2 = new User("leegw700", "이길원", "springno2");
         user3 = new User("bumjin", "박범진", "springno3");

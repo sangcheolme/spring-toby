@@ -21,9 +21,6 @@ public class UserDaoV6 implements UserDao {
         this.dataSource = dataSource;
     }
 
-    public void setDataSource(DataSource dataSource) {
-        this.dataSource = dataSource;
-    }
 
     @Override
     public void add(User user) throws SQLException {
