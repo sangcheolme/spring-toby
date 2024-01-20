@@ -15,12 +15,11 @@ import java.sql.SQLException;
  */
 public class UserDaoV6 implements UserDao {
 
-    private DataSource dataSource;
+    private final DataSource dataSource;
 
     public UserDaoV6(DataSource dataSource) {
         this.dataSource = dataSource;
     }
-
 
     @Override
     public void add(User user) throws SQLException {
